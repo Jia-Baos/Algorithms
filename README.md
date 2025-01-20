@@ -1,2 +1,3 @@
 # Algorithms
-efficient code
+
+concise, clever and efficient codes, enjoy it
