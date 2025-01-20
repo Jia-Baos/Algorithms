@@ -4,4 +4,6 @@ cmake_minimum_required(VERSION 3.27)
 # add_subdirectory()
 
 # 进入执行文件文件夹
-add_subdirectory(demo)
+add_subdirectory(computeOneInBinaryNumber)
+add_subdirectory(lineFitting)
+add_subdirectory(lineFittingRansac)
