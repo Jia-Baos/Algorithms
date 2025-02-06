@@ -4,7 +4,7 @@
 #include <cmath>
 #include <algorithm>
 
-bool macro_equal(const float p1, const float p2, const float tolerance = 1e-5)
+bool MacroEqual(const float p1, const float p2, const float tolerance = 1e-5)
 {
     return std::fabs(p1 - p2) < tolerance;
 }
@@ -21,7 +21,7 @@ struct Point2f {
 
     bool operator==(const Point2f &other) const
     {
-        return macro_equal(x, other.x) && macro_equal(y, other.y);
+        return MacroEqual(x, other.x) && MacroEqual(y, other.y);
     }
 };
 
