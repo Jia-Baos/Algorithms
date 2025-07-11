@@ -2,6 +2,17 @@
 #include <iterator>
 #include "utils.hpp"
 
+inline bool isFacingUp_Quaternion(double yaw, double pitch, double roll)
+{
+    Eigen::Quaterniond q = Eigen::AngleAxisd(yaw, Eigen::Vector3d::UnitZ())
+                           * Eigen::AngleAxisd(pitch, Eigen::Vector3d::UnitY())
+                           * Eigen::AngleAxisd(roll, Eigen::Vector3d::UnitX());
+
+    Eigen::Vector3d localUp = q * Eigen::Vector3d::UnitZ();
+
+    return localUp.z() > 0.707f; //  cos45°≈0.707
+}
+
 int main(int argc, char *argv[])
 {
     /**
@@ -115,6 +126,9 @@ int main(int argc, char *argv[])
     std::cout << "QUATERNION::quaternion\n"
               << QUATERNION::quaternion.coeffs().transpose() << std::endl
               << std::endl;
+
+    std::cout << "-------------: " << isFacingUp_Quaternion(0.0, 0.0, 2.0) << std::endl;
+    std::cout << "-------------: " << isFacingUp_Quaternion(0.0, 0.0, 0.0) << std::endl;
 
     return 0;
 }
